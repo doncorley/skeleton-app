@@ -1,0 +1,105 @@
+
+
+<div class="row" >
+  <div class="form-outline col-md-12">
+
+    <form  (ngSubmit)="onSubmit()" [formGroup]="accountsForm">
+      <table border="0" width="100%" valign="top" cellspacing="0" cellpaddig="0">
+        <tr>
+          <td colspan="3"><p><div style="color:#800000"><h4><b>ENTER THE LEGACY ACCOUNT DETAILS</b></h4></div>
+             <div class="line" style="height:1px;top:0px;width:100%;"></div>
+
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">&nbsp;</td>
+        <tr>
+          <td width="45%">
+            <div class="form-group">
+               <label for="acctnum">Account Number</label>
+               <input  width="200" size = "10" [(ngModel)]="model.acctnum" type="text" class="form-control" id="acctnum" formControlName="acctnum" placeholder="1234567890" >
+              <div style="color:#808080" size="-1">&nbsp;Account Number should not exceed 10 digits</div>
+            </div></td>
+          <td width="10%">&nbsp;</td>
+          <td width="45%">
+            <div class="form-group">
+              <label for="acctname">Account Name</label>
+              <input  [(ngModel)]="model.acctname" type="text" class="form-control" id="acctname" formControlName="acctname" placeholder="abcdefghijklmnopqrstuvwxyz" >
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td width="45%"><div class="form-group">
+            <label for="objcode">Object Code</label>
+            <input  [(ngModel)]="model.objcode" type="text" class="form-control" id="objcode" formControlName="objcode" placeholder="12345" >
+            <div style="color:#808080" size="-1">&nbsp;Object Code should not exceed 5 digits</div>
+          </div></td>
+          <td width="10%">&nbsp;</td>
+          <td width="45%"><div class="form-group">
+            <label for="objname">Object Name</label>
+            <input  [(ngModel)]="model.objname" type="text" class="form-control" id="objname" formControlName="objname" placeholder="abcdefghijklmnopqrstuvwxyz" >
+          </div></td>
+        </tr>
+        <tr><td colspan="3"><div class="line" style="height:1px;top:0px;width:100%;"></div></td></tr>
+       <tr><td colspan="3" align="center"><br>
+         <div>
+              <button [disabled]="!accountsForm.valid" type="submit" class="btn btn-default">Search</button>
+              <button type="Display All" class="btn btn-color">Display All</button>
+            </div>
+       </td>
+       </tr>
+      </table>
+    </form>
+  </div>
+</div>
+
+<table *ngIf="showItemAccounts"  class="table table-bordered table-condensed table-responsive" border="1">
+  <thead><tr>
+    <th>&nbsp;</th>
+    <th>Account ID</th>
+    <th>Account Name</th>
+    <th>Object Code</th>
+    <th>Object Name</th>
+    <th>Grant</th>
+    <th>Gift</th>
+    <th>Project</th>
+    <th>Cost Center</th>
+    <th>Fund</th>
+    <th>Revenue Category</th>
+    <th>Spend Cateogry</th>
+    <th>Hierarchy 1</th>
+    <th>Hierarchy 2</th>
+    <th>Hierarcchy 3</th>
+    <th>Date and Time</th>
+    <th>Updated by</th>
+  </tr></thead>
+  <tbody>
+  <tr *ngFor="let accounts of accounts">
+    <td><button (click)="onAccountsClick(accounts)" class="btn btn-primary btn-sm">Select</button></td>
+    <td>{{accounts.acctnum}}</td>
+    <td>{{accounts.acctname}}</td>
+    <td>{{accounts.objcode}}</td>
+    <td>{{accounts.objname}}</td>
+    <td>{{accounts.grant}}</td>
+    <td>{{accounts.gift}}</td>
+    <td>{{accounts.project}}</td>
+    <td>{{accounts.costcenter}}</td>
+    <td>{{accounts.fund}}</td>
+    <td>{{accounts.revenuecat}}</td>
+    <td>{{accounts.spendcat}}</td>
+    <td>{{accounts.hierarchy1}}</td>
+    <td>{{accounts.hierarchy2}}</td>
+    <td>{{accounts.hierarchy3}}</td>
+    <td>{{accounts.datetime}}</td>
+    <td>{{accounts.updateby}}</td>
+
+  </tr>
+
+  </tbody>
+</table>
+
+
+
+
+<!--{{jsonModel}}-->
